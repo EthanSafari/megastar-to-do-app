@@ -2,13 +2,35 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { CssBaseline } from '@mui/material';
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+
+const theme = createTheme({
+  palette: {
+    type: 'dark',
+    primary: {
+      main: 'rgb(41,38,57)',
+      contrastText: 'rgb(226,225,228)',
+    },
+    secondary: {
+      main: 'rgb(226,225,228)',
+    },
+    background: {
+      default: '#070417',
+      paper: 'rgb(41,38,57)',
+    },
+    text: {
+      primary: 'rgb(255,255,255)',
+      secondary: 'rgb(255,255,255)',
+    },
+  },
+});
 
 ReactDOM.render(
   <React.StrictMode>
-    <CssBaseline>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <App />
-    </CssBaseline>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

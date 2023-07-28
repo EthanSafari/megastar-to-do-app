@@ -1,6 +1,8 @@
-import { Button } from '@mui/material';
+import { Box } from '@mui/material';
 import React from 'react';
-import Homepage from './components/Homepage';
+import Navbar from './components/Navbar';
+import Searchbar from './components/Searchbar';
+import TopMenu from './components/TopMenu';
 
 function App() {
   // const getData = async () => {
@@ -20,7 +22,10 @@ function App() {
     >
       get data
     </Button> */}
-    <Homepage />
+    <Box
+    >
+      <TopMenu />
+    </Box>
     </>
   );
 }
