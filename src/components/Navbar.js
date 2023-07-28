@@ -10,12 +10,12 @@ const Navbar = () => {
                 display={'flex'}
                 justifyContent={'space-between'}
                 mb={3}
+                px={5}
             >
                 <Typography
                     variant="h4"
                     display={'flex'}
                     alignItems={'center'}
-                    pl={'12px'}
                 >
                     ToDo's
                 </Typography>

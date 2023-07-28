@@ -1,11 +1,11 @@
-import { Box, IconButton, InputBase, Paper, TextField } from "@mui/material"
+import { Box, Container, Divider, IconButton, InputBase, Paper, TextField } from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
 
 const Searchbar = () => {
     return (
         <Box
-            px={5}
-            my={3}
+            mx={5}
+            mt={3}
         >
             {/* <TextField
                 variant="filled"
@@ -36,6 +36,11 @@ const Searchbar = () => {
                     <SearchIcon color="secondary"/>
                 </IconButton>
             </Paper>
+            <Container style={{
+                borderBottom: '1px solid rgba(83, 81, 96, .7)',
+                marginTop: '1.5rem',
+                width: '30%'
+            }}/>
         </Box>
     )
 };
