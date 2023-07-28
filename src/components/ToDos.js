@@ -2,8 +2,15 @@ import { Box, Card, IconButton, Typography } from "@mui/material";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import { useSelector } from 'react-redux';
+import { useContext } from "react";
+import { TodoContext } from "../context/TodoContext";
 
 const ToDos = () => {
+    const { open } = useContext(TodoContext);
+    const todos = useSelector(state => open ?
+        Object.values(state.todos.todos).filter(todo => !todo.completed)
+        : Object.values(state.todos.todos).filter(todo => todo.completed));
     return (
         <Box
             pt={31}
@@ -23,6 +30,7 @@ const ToDos = () => {
                         display: "flex",
                         justifyContent: 'space-between'
                     }}
+                    key={id}
                 >
                     <Box
                         display={'flex'}
@@ -64,7 +72,9 @@ const ToDos = () => {
                             </Typography>
                         </Box>
                     </Box>
-                    <IconButton>
+                    <IconButton
+
+                    >
                         <MoreHorizIcon sx={{ color: 'white' }} />
                     </IconButton>
                 </Card>

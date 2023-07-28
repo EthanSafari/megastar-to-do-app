@@ -45,11 +45,11 @@ const initialState = { todos: {} };
 const todoReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
-        
+
         case (ALL_TODOS):
             newState = { todos: {} };
             action.todos.forEach(todo => {
-                newState.todos[todo.id] = todo;
+                    newState.todos[todo.id] = todo;
             });
             return newState;
 

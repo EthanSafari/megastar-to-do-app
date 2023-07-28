@@ -5,6 +5,7 @@ import App from './App';
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import { Provider } from 'react-redux'
 import configureStore from './store';
+import { TodoProvider } from './context/TodoContext';
 
 const store = configureStore();
 
@@ -32,10 +33,12 @@ const theme = createTheme({
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <App />
-      </ThemeProvider>
+      <TodoProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <App />
+        </ThemeProvider>
+      </TodoProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

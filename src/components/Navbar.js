@@ -1,7 +1,10 @@
 import { AppBar, Box, Button, ButtonGroup, IconButton, Typography } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
+import { useContext } from "react";
+import { TodoContext } from "../context/TodoContext";
 
 const Navbar = () => {
+    const { open, setOpen } = useContext(TodoContext);
     return (
         <AppBar
             position="static"
@@ -33,10 +36,20 @@ const Navbar = () => {
                 color="secondary"
                 fullWidth
             >
-                <Button>
+                <Button
+                    onClick={() => setOpen(true)}
+                    sx={open && {
+                        backgroundColor: 'rgba(189,189,189, .15)'
+                    }}
+                >
                     Open
                 </Button>
-                <Button>
+                <Button
+                    onClick={() => setOpen(false)}
+                    sx={!open && {
+                        backgroundColor: 'rgba(189,189,189, .15)'
+                    }}
+                >
                     Closed
                 </Button>
             </ButtonGroup>
