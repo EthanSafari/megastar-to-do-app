@@ -4,12 +4,13 @@ import Searchbar from "./Searchbar"
 const TopMenu = () => {
     return (
         <div style={{
-            position:'fixed',
+            position: 'fixed',
             width: '100vw',
             backgroundColor: '#070417',
-            }}>
-        <Navbar />
-        <Searchbar />
+            zIndex: 1,
+        }}>
+            <Navbar />
+            <Searchbar />
         </div>
     )
 };

@@ -7,16 +7,6 @@ const Searchbar = () => {
             mx={5}
             mt={3}
         >
-            {/* <TextField
-                variant="filled"
-                fullWidth
-                color="primary"
-                label="Search Todo's"
-                sx={{
-                    backgroundColor: 'rgb(41,38,57)',
-                    borderRadius: '5px'
-                }}
-            /> */}
             <Paper
                 variant="outlined"
                 sx={{
@@ -39,7 +29,7 @@ const Searchbar = () => {
             <Container style={{
                 borderBottom: '1px solid rgba(83, 81, 96, .7)',
                 marginTop: '1.5rem',
-                width: '30%'
+                width: '30%',
             }}/>
         </Box>
     )
