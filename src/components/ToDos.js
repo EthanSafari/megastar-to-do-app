@@ -5,14 +5,17 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { useSelector } from 'react-redux';
 import { useContext, useState } from "react";
 import { TodoContext } from "../context/TodoContext";
+import { patchTodoStatus } from "../store/todos";
+import { useDispatch } from "react-redux";
+
 
 const ToDos = () => {
+    const dispatch = useDispatch();
     const { open } = useContext(TodoContext);
     const [anchorEl, setAnchorEl] = useState(null);
     const todos = useSelector(state => open ?
         Object.values(state.todos.todos).filter(todo => !todo.completed)
         : Object.values(state.todos.todos).filter(todo => todo.completed));
-        console.log(anchorEl)
     return (
         <Box
             pt={31}
@@ -78,7 +81,7 @@ const ToDos = () => {
                     <IconButton
                         onClick={(e) => setAnchorEl({
                             event: e.currentTarget,
-                            id,
+                            selectedTodo: { id, userId, title, completed },
                         })}
                         sx={{height: '30px'}}
                         >
@@ -101,19 +104,43 @@ const ToDos = () => {
                             variant="text"
                         >
                             <Button
-                                onClick={() => console.log(anchorEl.id)}
+                                onClick={() => console.log(anchorEl.selectedTodo.id)}
                             >
                                 Edit ToDo
                             </Button>
                             {open ? (
                                 <Button
                                     color="secondary"
+                                    onClick={async () => {
+                                        try {
+                                            await dispatch(patchTodoStatus({
+                                                ...anchorEl.selectedTodo,
+                                                completed: true
+                                            }))
+                                            setAnchorEl(null);
+                                        } catch (error) {
+                                            console.log(error.message)
+                                        }
+                                    }
+                                }
                                 >
                                     Mark Completed
                                 </Button>
                             ) : (
                                 <Button
                                     color="secondary"
+                                    onClick={async () => {
+                                        try {
+                                            await dispatch(patchTodoStatus({
+                                                ...anchorEl.selectedTodo,
+                                                completed: false
+                                                }))
+                                            setAnchorEl(null)
+                                        } catch (error) {
+                                            console.log(error.message)
+                                        }
+                                    }
+                                }
                                 >
                                     Unmark Completed
                                 </Button>

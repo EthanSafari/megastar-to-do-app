@@ -43,17 +43,15 @@ export const getAllTodos = () => async (dispatch) => {
 
 export const patchTodoStatus = (todo) => async (dispatch) => {
     const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${todo.id}`, {
-        method: 'PATCH',
-        body: JSON.stringify({
-            completed: todo.completed ? false : true,
-        }),
+        method: 'PUT',
+        body: JSON.stringify(todo),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
         },
     });
     if (res.ok) {
         const data = await res.json();
-        dispatch(updateTodo(todo));
+        dispatch(updateTodo(data));
         return;
     }
 };
