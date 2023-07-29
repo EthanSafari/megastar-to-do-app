@@ -113,11 +113,11 @@ const ToDos = () => {
                                     color="secondary"
                                     onClick={async () => {
                                         try {
+                                            setAnchorEl(null);
                                             await dispatch(patchTodoStatus({
                                                 ...anchorEl.selectedTodo,
                                                 completed: true
                                             }))
-                                            setAnchorEl(null);
                                         } catch (error) {
                                             console.log(error.message)
                                         }
@@ -131,11 +131,11 @@ const ToDos = () => {
                                     color="secondary"
                                     onClick={async () => {
                                         try {
+                                            setAnchorEl(null);
                                             await dispatch(patchTodoStatus({
                                                 ...anchorEl.selectedTodo,
                                                 completed: false
                                                 }))
-                                            setAnchorEl(null)
                                         } catch (error) {
                                             console.log(error.message)
                                         }

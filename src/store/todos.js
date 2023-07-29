@@ -2,10 +2,18 @@ const ALL_TODOS = 'todos/allTodos';
 const ADD_TODO = 'todos/addTodo';
 const UPDATE_TODO = 'todos/updateTodo';
 const DELETE_TODO = 'todos/deleteTodo';
+const SEARCH_TODOS = 'todos/searchedTodos';
 
 const allTodos = (todos) => {
     return {
         type: ALL_TODOS,
+        todos
+    }
+};
+
+const searchedTodos = (todos) => {
+    return {
+        type: SEARCH_TODOS,
         todos
     }
 };
@@ -56,20 +64,20 @@ export const patchTodoStatus = (todo) => async (dispatch) => {
     }
 };
 
-const initialState = { todos: {} };
+const initialState = { todos: {}, searchedTodos: {} };
 const todoReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
 
         case (ALL_TODOS):
-            newState = { todos: {} };
+            newState = { todos: {}, searchedTodos: {} };
             action.todos.forEach(todo => {
                 newState.todos[todo.id] = todo;
             });
             return newState;
 
         case (UPDATE_TODO):
-            newState = { todos: {...state.todos} };
+            newState = { todos: {...state.todos}, searchedTodos: {} };
             newState.todos[action.todo.id] = action.todo;
             return newState;
 
