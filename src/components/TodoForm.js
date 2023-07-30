@@ -2,13 +2,13 @@ import { Box, Button, ButtonGroup, Icon, IconButton, MenuItem, Select, TextField
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import DragHandleIcon from '@mui/icons-material/DragHandle';
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { patchTodoStatus } from "../store/todos";
 
 const TodoForm = ({ todo, setOpenModal, setAnchorEl }) => {
+    const todosArr = useSelector(state => Object.values(state.todos.todos));
     const dispatch = useDispatch();
     const [editTodo, setEditTodo] = useState({
-        id: todo?.id || '',
         userId: todo?.userId || 1,
         title: todo?.title || '',
         completed: todo?.completed || false
@@ -23,14 +23,17 @@ const TodoForm = ({ todo, setOpenModal, setAnchorEl }) => {
         e.preventDefault();
         if (todo) {
             try {
-                await dispatch(patchTodoStatus(editTodo));
+                await dispatch(patchTodoStatus({ ...editTodo, id: todo?.id }));
                 setAnchorEl(null);
                 setOpenModal(false);
             } catch (error) {
                 console.log(error.message)
             }
-        };
+        } else {
+            console.log('this is the add function')
+        }
     };
+    console.log(editTodo)
     return (
         <Box
             height={'90vh'}
@@ -73,7 +76,9 @@ const TodoForm = ({ todo, setOpenModal, setAnchorEl }) => {
                         Edit Todo
                     </Typography>
                 ) : (
-                    <Typography>
+                    <Typography
+                        variant="h4"
+                    >
                         Add Todo
                     </Typography>
                 )}
@@ -86,6 +91,9 @@ const TodoForm = ({ todo, setOpenModal, setAnchorEl }) => {
                     flexDirection: 'column'
                 }}
             >
+                <Typography ml={2} mt={1}>
+                    Todo
+                </Typography>
                 <TextField
                     variant="outlined"
                     sx={{
@@ -98,13 +106,16 @@ const TodoForm = ({ todo, setOpenModal, setAnchorEl }) => {
                     value={editTodo.title}
                     name="title"
                     onChange={onChange}
+                    placeholder="What do you need todo?"
                 />
+                <Typography ml={2} mt={1}>
+                    User
+                </Typography>
                 <Select
                     name="userId"
                     value={editTodo.userId}
                     onChange={onChange}
                     fullWidth
-                    label='User'
                     sx={{
                         backgroundColor: "rgb(55,49,87)",
                         borderRadius: '5px',
@@ -115,12 +126,14 @@ const TodoForm = ({ todo, setOpenModal, setAnchorEl }) => {
                         <MenuItem value={userNum} key={userNum}>{userNum}</MenuItem>
                     ))}
                 </Select>
+                <Typography ml={2} mt={1}>
+                    Status
+                </Typography>
                 <Select
                     name="completed"
                     value={editTodo.completed}
                     onChange={onChange}
                     fullWidth
-                    label='User'
                     sx={{
                         backgroundColor: "rgb(55,49,87)",
                         borderRadius: '5px',

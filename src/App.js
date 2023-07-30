@@ -4,6 +4,7 @@ import TopMenu from './components/TopMenu';
 import ToDos from './components/ToDos';
 import { useDispatch } from "react-redux";
 import { getAllTodos } from './store/todos';
+import AddButton from './components/AddButton';
 
 function App() {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <>
+      <AddButton />
       <Box>
         <TopMenu />
         <ToDos />
