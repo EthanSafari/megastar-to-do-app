@@ -165,7 +165,7 @@ const ToDos = () => {
                 open={openModal}
                 onClose={() => setOpenModal(false)}
             >
-                <TodoForm todo={anchorEl?.selectedTodo} setOpenModal={setOpenModal} />
+                <TodoForm todo={anchorEl?.selectedTodo} setOpenModal={setOpenModal} setAnchorEl={setAnchorEl} />
             </Modal>
         </Box>
     )

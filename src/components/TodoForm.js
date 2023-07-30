@@ -3,8 +3,9 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import DragHandleIcon from '@mui/icons-material/DragHandle';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { patchTodoStatus } from "../store/todos";
 
-const TodoForm = ({ todo, setOpenModal }) => {
+const TodoForm = ({ todo, setOpenModal, setAnchorEl }) => {
     const dispatch = useDispatch();
     const [editTodo, setEditTodo] = useState({
         id: todo?.id || '',
@@ -18,8 +19,17 @@ const TodoForm = ({ todo, setOpenModal }) => {
             [e.target.name]: e.target.value,
         }));
     };
-    const handleEditSubmit = () => {
-
+    const handleEditSubmit = async (e) => {
+        e.preventDefault();
+        if (todo) {
+            try {
+                await dispatch(patchTodoStatus(editTodo));
+                setAnchorEl(null);
+                setOpenModal(false);
+            } catch (error) {
+                console.log(error.message)
+            }
+        };
     };
     return (
         <Box
@@ -69,6 +79,7 @@ const TodoForm = ({ todo, setOpenModal }) => {
                 )}
             </Box>
             <form
+                onSubmit={handleEditSubmit}
                 style={{
                     width: '80vw',
                     display: 'flex',
@@ -120,15 +131,16 @@ const TodoForm = ({ todo, setOpenModal }) => {
                     <MenuItem value={true}>Closed</MenuItem>
                 </Select>
                 <Button
-                sx={{backgroundColor: "#32de84"}}
-                variant="contained"
-                disableRipple={true}
+                    sx={{ backgroundColor: "#32de84" }}
+                    variant="contained"
+                    disableRipple={true}
+                    type="submit"
                 >
                     Finish
                 </Button>
                 <Button
                     variant="text"
-                    sx={{color: 'rgba(255,255,255,.8)'}}
+                    sx={{ color: 'rgba(255,255,255,.8)' }}
                     onClick={() => setOpenModal(false)}
                 >
                     Quit
