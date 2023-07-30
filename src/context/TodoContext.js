@@ -3,9 +3,11 @@ import { createContext, useState } from 'react';
 export const TodoContext = createContext();
 
 export const TodoProvider = (props) => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(1);
+    const [search, setSearch] = useState('');
     const todoContextValue = {
-        open, setOpen
+        open, setOpen,
+        search, setSearch,
     };
     return (
         <TodoContext.Provider value={todoContextValue}>

@@ -1,7 +1,21 @@
 import { Box, Container, Divider, IconButton, InputBase, Paper, TextField } from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
+import { useContext } from "react";
+import { TodoContext } from "../context/TodoContext";
 
 const Searchbar = () => {
+    const { open, setOpen, search, setSearch } = useContext(TodoContext);
+    const notSelected = {
+        py: '8px',
+        px: '10px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    };
+    const selected = {
+        ...notSelected,
+        backgroundColor: 'rgb(63,60,77)',
+    };
     return (
         <Box
             mx={5}
@@ -9,18 +23,15 @@ const Searchbar = () => {
         >
             <Paper
                 variant="outlined"
-                sx={{
-                    py: '8px',
-                    px: '10px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between'
-                }}
+                sx={open === 2 ? selected : notSelected}
             >
                 <InputBase
                     placeholder="Search Todo's"
                     fullWidth
                     sx={{ pl: 2 }}
+                    onClick={() => setOpen(2)}
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
                 />
                 <IconButton>
                     <SearchIcon color="secondary"/>

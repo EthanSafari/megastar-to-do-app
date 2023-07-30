@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { TodoContext } from "../context/TodoContext";
 
 const Navbar = () => {
-    const { open, setOpen } = useContext(TodoContext);
+    const { open, setOpen, setSearch } = useContext(TodoContext);
     return (
         <AppBar
             position="static"
@@ -37,16 +37,16 @@ const Navbar = () => {
                 fullWidth
             >
                 <Button
-                    onClick={() => setOpen(true)}
-                    sx={open && {
+                    onClick={() => {setOpen(1); setSearch('')}}
+                    sx={open === 1 && {
                         backgroundColor: 'rgba(189,189,189, .15)'
                     }}
                 >
                     Open
                 </Button>
                 <Button
-                    onClick={() => setOpen(false)}
-                    sx={!open && {
+                    onClick={() => {setOpen(0); setSearch('')}}
+                    sx={open === 0 && {
                         backgroundColor: 'rgba(189,189,189, .15)'
                     }}
                 >

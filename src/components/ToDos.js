@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Card, Divider, IconButton, List, ListItem, Popover, Typography } from "@mui/material";
+import { Box, Button, ButtonGroup, Card, Divider, IconButton, List, ListItem, Modal, Popover, Typography } from "@mui/material";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
@@ -7,15 +7,21 @@ import { useContext, useState } from "react";
 import { TodoContext } from "../context/TodoContext";
 import { patchTodoStatus } from "../store/todos";
 import { useDispatch } from "react-redux";
+import TodoForm from "./TodoForm";
 
 
 const ToDos = () => {
     const dispatch = useDispatch();
-    const { open } = useContext(TodoContext);
+    const [openModal, setOpenModal] = useState(false);
+    const { open, search } = useContext(TodoContext);
     const [anchorEl, setAnchorEl] = useState(null);
-    const todos = useSelector(state => open ?
-        Object.values(state.todos.todos).filter(todo => !todo.completed)
-        : Object.values(state.todos.todos).filter(todo => todo.completed));
+    const todos = useSelector(state =>
+        open === 1
+            ? Object.values(state.todos.todos).filter(todo => !todo.completed)
+            : open === 0
+                ? Object.values(state.todos.todos).filter(todo => todo.completed)
+                : Object.values(state.todos.todos).filter(todo => todo.title.includes(search))
+    );
     return (
         <Box
             pt={31}
@@ -57,8 +63,8 @@ const ToDos = () => {
                                     color: '#32de84',
                                     mr: 2
                                 }}
-                                />
-                                )}
+                            />
+                        )}
                         <Box>
                             <Typography>
                                 {title}
@@ -73,7 +79,7 @@ const ToDos = () => {
                                     borderRadius: '3px',
                                     color: 'rgb(189,189,189)'
                                 }}
-                                >
+                            >
                                 User: {userId}
                             </Typography>
                         </Box>
@@ -83,8 +89,8 @@ const ToDos = () => {
                             event: e.currentTarget,
                             selectedTodo: { id, userId, title, completed },
                         })}
-                        sx={{height: '30px'}}
-                        >
+                        sx={{ height: '30px' }}
+                    >
                         <MoreHorizIcon sx={{ color: 'white' }} />
                     </IconButton>
                     <Popover
@@ -97,18 +103,21 @@ const ToDos = () => {
                             horizontal: 'left',
                         }}
                         elevation={1}
-                        >
+                    >
                         <ButtonGroup
                             color="secondary"
                             orientation="vertical"
                             variant="text"
+                            sx={{
+                                backgroundColor: 'rgba(0,0,0,.01)'
+                            }}
                         >
                             <Button
-                                onClick={() => console.log(anchorEl.selectedTodo.id)}
+                                onClick={() => setOpenModal(true)}
                             >
                                 Edit ToDo
                             </Button>
-                            {open ? (
+                            {!anchorEl?.selectedTodo.completed ? (
                                 <Button
                                     color="secondary"
                                     onClick={async () => {
@@ -117,16 +126,16 @@ const ToDos = () => {
                                             await dispatch(patchTodoStatus({
                                                 ...anchorEl.selectedTodo,
                                                 completed: true
-                                            }))
+                                            }));
                                         } catch (error) {
-                                            console.log(error.message)
+                                            console.log(error.message);
                                         }
-                                    }
-                                }
+                                    }}
                                 >
                                     Mark Completed
                                 </Button>
                             ) : (
+                                <>
                                 <Button
                                     color="secondary"
                                     onClick={async () => {
@@ -135,20 +144,29 @@ const ToDos = () => {
                                             await dispatch(patchTodoStatus({
                                                 ...anchorEl.selectedTodo,
                                                 completed: false
-                                                }))
+                                            }))
                                         } catch (error) {
                                             console.log(error.message)
                                         }
-                                    }
-                                }
+                                    }}
                                 >
                                     Unmark Completed
                                 </Button>
+                                <Button>
+                                    DELETE TODO
+                                </Button>
+                                </>
                             )}
                         </ButtonGroup>
                     </Popover>
                 </Card>
             ))}
+            <Modal
+                open={openModal}
+                onClose={() => setOpenModal(false)}
+            >
+                <TodoForm todo={anchorEl?.selectedTodo} setOpenModal={setOpenModal} />
+            </Modal>
         </Box>
     )
 };
