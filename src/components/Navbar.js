@@ -13,7 +13,7 @@ const Navbar = () => {
                 display={'flex'}
                 justifyContent={'space-between'}
                 mb={3}
-                px={5}
+                px={4}
             >
                 <Typography
                     variant="h4"
