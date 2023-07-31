@@ -40,7 +40,8 @@ const TodoForm = ({ todo, setAnchorEl }) => {
     return (
         <Slide direction="up" in={!!openModal}>
             <Box
-                height={'90vh'}
+                height={'95vh'}
+                minHeight={'fit-content'}
                 width={'100vw'}
                 bgcolor={'rgb(7,4,23)'}
                 bottom={0}

@@ -20,6 +20,7 @@ const AddButton = () => {
                     bottom: 30,
                     height: '75px',
                     width: '75px',
+                    zIndex: 2
                 }}
                 variant="contained"
                 disableRipple
