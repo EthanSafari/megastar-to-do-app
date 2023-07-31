@@ -25,7 +25,7 @@ const ToDos = () => {
     return (
         <Box
             pt={31}
-            pb={5}
+            pb={10}
             display={'flex'}
             flexDirection={'column'}
             alignItems={'center'}
@@ -102,7 +102,7 @@ const ToDos = () => {
                             vertical: 'bottom',
                             horizontal: 'left',
                         }}
-                        elevation={1}
+                        elevation={2}
                     >
                         <ButtonGroup
                             color="secondary"

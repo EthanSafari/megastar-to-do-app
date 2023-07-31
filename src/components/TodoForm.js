@@ -3,12 +3,13 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import DragHandleIcon from '@mui/icons-material/DragHandle';
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { patchTodoStatus } from "../store/todos";
+import { addNewTodo, patchTodoStatus } from "../store/todos";
 
 const TodoForm = ({ todo, setOpenModal, setAnchorEl }) => {
-    const todosArr = useSelector(state => Object.values(state.todos.todos));
+    const todoArr = useSelector(state => Object.values(state.todos.todos));
     const dispatch = useDispatch();
     const [editTodo, setEditTodo] = useState({
+        id: todo?.id || todoArr.length+1,
         userId: todo?.userId || 1,
         title: todo?.title || '',
         completed: todo?.completed || false
@@ -22,18 +23,18 @@ const TodoForm = ({ todo, setOpenModal, setAnchorEl }) => {
     const handleEditSubmit = async (e) => {
         e.preventDefault();
         if (todo) {
-            try {
-                await dispatch(patchTodoStatus({ ...editTodo, id: todo?.id }));
+                await dispatch(patchTodoStatus(editTodo));
                 setAnchorEl(null);
                 setOpenModal(false);
-            } catch (error) {
-                console.log(error.message)
-            }
         } else {
-            console.log('this is the add function')
+                await dispatch(addNewTodo({
+                    userId: editTodo.userId,
+                    title: editTodo.title,
+                    completed: editTodo.completed
+                }));
+                setOpenModal(false);
         }
     };
-    console.log(editTodo)
     return (
         <Box
             height={'90vh'}

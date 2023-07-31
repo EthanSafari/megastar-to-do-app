@@ -57,6 +57,11 @@ export const patchTodoStatus = (todo) => async (dispatch) => {
             'Content-type': 'application/json; charset=UTF-8',
         },
     });
+    if (res.status === 500 && todo.id > 200) {
+        dispatch(updateTodo(todo));
+        console.log('New resource not found on server due to fake response from server. ADJUSTING DATA ACCORDINGLY.');
+        return;
+    };
     if (res.ok) {
         const data = await res.json();
         dispatch(updateTodo(data));
@@ -64,20 +69,40 @@ export const patchTodoStatus = (todo) => async (dispatch) => {
     }
 };
 
-const initialState = { todos: {}, searchedTodos: {} };
+export const addNewTodo = (todo) => async (dispatch) => {
+    const res = await fetch('https://jsonplaceholder.typicode.com/todos', {
+        method: 'POST',
+        body: JSON.stringify(todo),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(addTodo(data));
+        return;
+    }
+};
+
+const initialState = { todos: {} };
 const todoReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
 
         case (ALL_TODOS):
-            newState = { todos: {}, searchedTodos: {} };
+            newState = { todos: {} };
             action.todos.forEach(todo => {
                 newState.todos[todo.id] = todo;
             });
             return newState;
 
         case (UPDATE_TODO):
-            newState = { todos: {...state.todos}, searchedTodos: {} };
+            newState = { todos: { ...state.todos } };
+            newState.todos[action.todo.id] = action.todo;
+            return newState;
+
+        case (ADD_TODO):
+            newState = { todos: { ...state.todos } };
             newState.todos[action.todo.id] = action.todo;
             return newState;
 
