@@ -1,6 +1,6 @@
-import { AppBar, Box, Button, ButtonGroup, IconButton, Typography } from "@mui/material"
+import { AppBar, Box, Button, ButtonGroup, IconButton, Typography, Link } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TodoContext } from "../context/TodoContext";
 
 const Navbar = () => {
@@ -22,14 +22,19 @@ const Navbar = () => {
                 >
                     ToDo's
                 </Typography>
-                <IconButton
-                    size="large"
-                    color="inherit"
+                <Link
+                    color={'rgb(255,255,255)'}
+                    href="https://github.com/EthanSafari/megastar-to-do-app"
                 >
-                    <MenuIcon
-                        fontSize='large'
-                    />
-                </IconButton>
+                    <IconButton
+                        size="large"
+                        color="inherit"
+                    >
+                        <MenuIcon
+                            fontSize='large'
+                        />
+                    </IconButton>
+                </Link>
             </Box>
             <ButtonGroup
                 variant="text"
@@ -37,7 +42,7 @@ const Navbar = () => {
                 fullWidth
             >
                 <Button
-                    onClick={() => {setOpen(1); setSearch('')}}
+                    onClick={() => { setOpen(1); setSearch('') }}
                     sx={open === 1 && {
                         backgroundColor: 'rgba(189,189,189, .15)'
                     }}
@@ -45,7 +50,7 @@ const Navbar = () => {
                     Open
                 </Button>
                 <Button
-                    onClick={() => {setOpen(0); setSearch('')}}
+                    onClick={() => { setOpen(0); setSearch('') }}
                     sx={open === 0 && {
                         backgroundColor: 'rgba(189,189,189, .15)'
                     }}

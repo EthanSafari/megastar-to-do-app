@@ -13,7 +13,7 @@ const AddButton = () => {
             position={'fixed'}
             height={'100vh'}
             width={'100vw'}
-        >
+            >
             <IconButton
                 sx={{
                     backgroundColor: 'rgba(255,255,255,1)',
