@@ -5,7 +5,7 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { useSelector } from 'react-redux';
 import { useContext, useState } from "react";
 import { TodoContext } from "../context/TodoContext";
-import { patchTodoStatus } from "../store/todos";
+import { patchTodoStatus, deleteSelectedTodo } from "../store/todos";
 import { useDispatch } from "react-redux";
 import TodoForm from "./TodoForm";
 
@@ -152,7 +152,12 @@ const ToDos = () => {
                                 >
                                     Unmark Completed
                                 </Button>
-                                <Button>
+                                <Button
+                                onClick={async () => {
+                                    setAnchorEl(null);
+                                    await dispatch(deleteSelectedTodo(anchorEl.selectedTodo.id))
+                                }}
+                                >
                                     DELETE TODO
                                 </Button>
                                 </>
@@ -161,6 +166,11 @@ const ToDos = () => {
                     </Popover>
                 </Card>
             ))}
+            {search.length > 0 && todos.length === 0 && (
+                <Typography>
+                    Sorry, no results found. Please try another option.
+                </Typography>
+            )}
             <Modal
                 open={openModal}
                 onClose={() => setOpenModal(false)}

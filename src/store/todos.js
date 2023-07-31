@@ -84,6 +84,21 @@ export const addNewTodo = (todo) => async (dispatch) => {
     }
 };
 
+export const deleteSelectedTodo = (todoId) => async (dispatch) => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${todoId}`, {
+        method: 'DELETE',
+      });
+      if (res.status === 500 && todoId > 200) {
+        dispatch(deleteTodo(todoId));
+        console.log('New resource not found on server due to fake response from server. ADJUSTING DATA ACCORDINGLY.');
+        return;
+    };
+    if (res.ok) {
+        dispatch(deleteTodo(todoId));
+        return;
+    };
+};
+
 const initialState = { todos: {} };
 const todoReducer = (state = initialState, action) => {
     let newState;
@@ -104,6 +119,11 @@ const todoReducer = (state = initialState, action) => {
         case (ADD_TODO):
             newState = { todos: { ...state.todos } };
             newState.todos[action.todo.id] = action.todo;
+            return newState;
+
+        case DELETE_TODO:
+            newState = { todos: { ...state.todos } };
+            delete newState.todos[action.todoId];
             return newState;
 
         default:
