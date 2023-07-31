@@ -12,8 +12,7 @@ import TodoForm from "./TodoForm";
 
 const ToDos = () => {
     const dispatch = useDispatch();
-    const [openModal, setOpenModal] = useState(false);
-    const { open, search } = useContext(TodoContext);
+    const { open, search, openModal, setOpenModal} = useContext(TodoContext);
     const [anchorEl, setAnchorEl] = useState(null);
     const todos = useSelector(state =>
         open === 1

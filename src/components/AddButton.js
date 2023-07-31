@@ -2,10 +2,12 @@ import { Box, Button, IconButton, Modal } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import { SportsRugbySharp } from "@mui/icons-material";
 import { useState } from "react";
+import { useContext } from "react";
 import TodoForm from "./TodoForm";
+import { TodoContext } from "../context/TodoContext";
 
 const AddButton = () => {
-    const [openModal, setOpenModal] = useState(false);
+    const {openModal, setOpenModal} = useContext(TodoContext)
     return (
         <Box
             position={'fixed'}
