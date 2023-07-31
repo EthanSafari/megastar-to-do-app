@@ -1,6 +1,6 @@
 import { AppBar, Box, Button, ButtonGroup, IconButton, Typography, Link } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { TodoContext } from "../context/TodoContext";
 
 const Navbar = () => {

@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Card, Divider, IconButton, List, ListItem, Modal, Popover, Typography } from "@mui/material";
+import { Box, Button, ButtonGroup, Card, IconButton, Modal, Popover, Typography } from "@mui/material";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
@@ -12,7 +12,7 @@ import TodoForm from "./TodoForm";
 
 const ToDos = () => {
     const dispatch = useDispatch();
-    const { open, search, openModal, setOpenModal} = useContext(TodoContext);
+    const { open, search, openModal, setOpenModal } = useContext(TodoContext);
     const [anchorEl, setAnchorEl] = useState(null);
     const todos = useSelector(state =>
         open === 1
@@ -135,30 +135,30 @@ const ToDos = () => {
                                 </Button>
                             ) : (
                                 <>
-                                <Button
-                                    color="secondary"
-                                    onClick={async () => {
-                                        try {
+                                    <Button
+                                        color="secondary"
+                                        onClick={async () => {
+                                            try {
+                                                setAnchorEl(null);
+                                                await dispatch(patchTodoStatus({
+                                                    ...anchorEl.selectedTodo,
+                                                    completed: false
+                                                }))
+                                            } catch (error) {
+                                                console.log(error.message)
+                                            }
+                                        }}
+                                    >
+                                        Unmark Completed
+                                    </Button>
+                                    <Button
+                                        onClick={async () => {
                                             setAnchorEl(null);
-                                            await dispatch(patchTodoStatus({
-                                                ...anchorEl.selectedTodo,
-                                                completed: false
-                                            }))
-                                        } catch (error) {
-                                            console.log(error.message)
-                                        }
-                                    }}
-                                >
-                                    Unmark Completed
-                                </Button>
-                                <Button
-                                onClick={async () => {
-                                    setAnchorEl(null);
-                                    await dispatch(deleteSelectedTodo(anchorEl.selectedTodo.id))
-                                }}
-                                >
-                                    DELETE TODO
-                                </Button>
+                                            await dispatch(deleteSelectedTodo(anchorEl.selectedTodo.id))
+                                        }}
+                                    >
+                                        DELETE TODO
+                                    </Button>
                                 </>
                             )}
                         </ButtonGroup>

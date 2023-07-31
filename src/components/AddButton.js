@@ -1,19 +1,17 @@
-import { Box, Button, IconButton, Modal } from "@mui/material";
+import { Box, IconButton, Modal } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
-import { SportsRugbySharp } from "@mui/icons-material";
-import { useState } from "react";
 import { useContext } from "react";
 import TodoForm from "./TodoForm";
 import { TodoContext } from "../context/TodoContext";
 
 const AddButton = () => {
-    const {openModal, setOpenModal} = useContext(TodoContext)
+    const { openModal, setOpenModal } = useContext(TodoContext)
     return (
         <Box
             position={'fixed'}
             height={'100vh'}
             width={'100vw'}
-            >
+        >
             <IconButton
                 sx={{
                     backgroundColor: 'rgba(255,255,255,1)',

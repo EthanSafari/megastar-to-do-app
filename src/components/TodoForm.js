@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Slide, Icon, IconButton, MenuItem, Select, TextField, Typography } from "@mui/material";
+import { Box, Button, Slide, IconButton, MenuItem, Select, TextField, Typography } from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import DragHandleIcon from '@mui/icons-material/DragHandle';
 import { useState, useContext } from "react";
@@ -111,6 +111,8 @@ const TodoForm = ({ todo, setAnchorEl }) => {
                         name="title"
                         onChange={onChange}
                         placeholder="What do you need todo?"
+                        error={editTodo.title.trim().length < 3}
+                        helperText={editTodo.title.trim().length < 3 && 'Todos must be at least 3 characters in length.'}
                     />
                     <Typography ml={2} mt={1}>
                         User
@@ -152,6 +154,7 @@ const TodoForm = ({ todo, setAnchorEl }) => {
                         variant="contained"
                         disableRipple={true}
                         type="submit"
+                        disabled={editTodo.title.trim().length < 3}
                     >
                         Finish
                     </Button>
