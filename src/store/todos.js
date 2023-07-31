@@ -2,18 +2,10 @@ const ALL_TODOS = 'todos/allTodos';
 const ADD_TODO = 'todos/addTodo';
 const UPDATE_TODO = 'todos/updateTodo';
 const DELETE_TODO = 'todos/deleteTodo';
-const SEARCH_TODOS = 'todos/searchedTodos';
 
 const allTodos = (todos) => {
     return {
         type: ALL_TODOS,
-        todos
-    }
-};
-
-const searchedTodos = (todos) => {
-    return {
-        type: SEARCH_TODOS,
         todos
     }
 };
