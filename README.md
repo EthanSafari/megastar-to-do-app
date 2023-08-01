@@ -16,41 +16,44 @@ _NAVIGATE TO localhost:3000 TO VIEW APP IN YOUR BROWSER_
 
 > - [x] [http://localhost:3000](http://localhost:3000)
 
+_ENJOY!_
+
 - - - -
 - - - -
 
 ### Application Features: ###
-> #### User can view all tasks #### 
-![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/3cc30338-482d-4d9b-9963-9757b5d6b015)
 
-- - - -
-
->  ### User can sort by open tags ### 
+>  ### User can sort by open todoss ### 
 ![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/88803476-752f-4de8-95ae-eabf0389efef)
 
 - - - -
 
->  ### User can sort by closed tags ### 
+>  ### User can sort by closed todos ### 
 ![image](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/d6765c70-7b07-4363-b909-9b0eccdb0a86)
 
 - - - -
 
->  ### User can search for a tag and view searched tags  ### 
+> #### User can view all todos #### 
+![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/3cc30338-482d-4d9b-9963-9757b5d6b015)
+
+- - - -
+
+>  ### User can search for a todo and view searched todos  ### 
 ![image](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/f54e3269-11cc-471e-be6b-3682fa4ced63)
 
 - - - -
 
-> ### User can create a new tag ### 
+> ### User can create a new todo ### 
 ![image](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/440d0a5d-3c70-4306-9256-ccb335bb941c)
 
 - - - -
 
->  ### User can edit tags ### 
+>  ### User can edit todos ### 
 ![image](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/6d45b661-45ec-4316-b6d5-1bb0ba256d7a)
 
 - - - -
 
-> ###  User can delete tags  ### 
+> ###  User can delete todos  ### 
 ![image](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/96408abf-4fa7-4a0c-aed7-d370a9359366)
 
 
