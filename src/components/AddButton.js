@@ -31,7 +31,7 @@ const AddButton = () => {
             <Box
                 width={'115px'}
                 height={'115px'}
-                backgroundColor={'rgb(63,60,77)'}
+                backgroundColor={'transparent'}
                 // bottom={10}
                 position={'absolute'}
                 borderRadius={'100px'}
