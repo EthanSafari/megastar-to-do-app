@@ -12,11 +12,20 @@ _OR_
 - - - -
 
 #### Application Features: ####
-> - [x] User can view all tasks
-> - [x] User can sort by open and closed tags
-> - [x] User can search for a tag and view searched tags
-> - [x] User can create a new tag
-> - [x] User can edit tags
-> - [x] User can delete tags
+> - [x] User can view all tasks <br />
+![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/008f1394-2216-4fc2-8419-b1254b63c8e8)
+
+
+> - [x] User can sort by open and closed tags <br />
+![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/008f1394-2216-4fc2-8419-b1254b63c8e8)
+
+> - [x] User can search for a tag and view searched tags <br />
+![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/008f1394-2216-4fc2-8419-b1254b63c8e8)
+> - [x] User can create a new tag <br />
+![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/008f1394-2216-4fc2-8419-b1254b63c8e8)
+> - [x] User can edit tags <br />
+![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/008f1394-2216-4fc2-8419-b1254b63c8e8)
+> - [x] User can delete tags <br />
+![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/008f1394-2216-4fc2-8419-b1254b63c8e8)
 
 
