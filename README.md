@@ -13,19 +13,26 @@ _OR_
 
 #### Application Features: ####
 > - [x] User can view all tasks <br />
-![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/008f1394-2216-4fc2-8419-b1254b63c8e8)
+![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/3cc30338-482d-4d9b-9963-9757b5d6b015)
 
 
-> - [x] User can sort by open and closed tags <br />
-![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/008f1394-2216-4fc2-8419-b1254b63c8e8)
+> - [x] User can sort by open tags <br />
+![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/88803476-752f-4de8-95ae-eabf0389efef)
+
+> - [x] User can sort by closed tags <br />
+![image](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/d6765c70-7b07-4363-b909-9b0eccdb0a86)
 
 > - [x] User can search for a tag and view searched tags <br />
-![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/008f1394-2216-4fc2-8419-b1254b63c8e8)
+![image](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/f54e3269-11cc-471e-be6b-3682fa4ced63)
+
 > - [x] User can create a new tag <br />
-![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/008f1394-2216-4fc2-8419-b1254b63c8e8)
+![image](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/440d0a5d-3c70-4306-9256-ccb335bb941c)
+
 > - [x] User can edit tags <br />
-![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/008f1394-2216-4fc2-8419-b1254b63c8e8)
+![image](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/6d45b661-45ec-4316-b6d5-1bb0ba256d7a)
+
 > - [x] User can delete tags <br />
-![picture alt](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/008f1394-2216-4fc2-8419-b1254b63c8e8)
+![image](https://github.com/EthanSafari/megastar-to-do-app/assets/94498213/96408abf-4fa7-4a0c-aed7-d370a9359366)
+
 
 
