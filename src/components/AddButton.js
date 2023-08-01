@@ -14,11 +14,12 @@ const AddButton = () => {
             display={'flex'}
             flexDirection={'column'}
             justifyContent={'flex-end'}
-            // alignItems={'center'}
+            alignItems={'flex-end'}
             bottom={3}
+            right={'8%'}
         // pr={20}
         >
-            <Box
+            {/* <Box
                 height={'125px'}
                 width={'115px'}
                 backgroundColor={'#070417'}
@@ -27,7 +28,7 @@ const AddButton = () => {
                 bottom={-10}
                 borderRadius={'0 60px 0 0'}
 
-            />
+            /> */}
             <Box
                 width={'115px'}
                 height={'115px'}
